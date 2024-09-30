@@ -12,11 +12,20 @@ main();
 function main(){
     const root = document.getElementById('root');
     const outPut = document.getElementById('output')
-    const bgBtn = document.getElementById('change-btn').addEventListener('click',function (){
+    const btnCopy = document.getElementById('copy-btn');
+    const bgBtn = document.getElementById('change-btn');
+    
+    bgBtn.addEventListener('click',function (){
         const bgColor = getRandomRGBColor();
         root.style.backgroundColor =bgColor;
         outPut.value = bgColor;
-    })
+        btnCopy.innerHTML = 'Copy';
+    });
+
+    btnCopy.addEventListener('click', function(){
+        navigator.clipboard.write(outPut.value)
+        copyBtn.innerHTML = "Code Copied";
+    });
 }
 // step-2 generate rgb function
 function getRandomRGBColor() {
